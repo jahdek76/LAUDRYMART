@@ -26,7 +26,7 @@ export default function Finances() {
               <TableRow key={transaction.id}>
                 <TableCell>{transaction.date.toLocaleDateString()}</TableCell>
                 <TableCell>
-                  <Badge variant={transaction.type === 'Income' ? 'success' : 'destructive'}>
+                  <Badge variant={transaction.type === 'Income' ? 'secondary' : 'destructive'}>
                     {transaction.type}
                   </Badge>
                 </TableCell>

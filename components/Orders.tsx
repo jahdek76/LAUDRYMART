@@ -31,7 +31,7 @@ export default function Orders() {
                   <TableCell>{customer ? customer.name : 'Unknown'}</TableCell>
                   <TableCell>{order.date.toLocaleDateString()}</TableCell>
                   <TableCell>
-                    <Badge variant={order.status === 'Completed' ? 'success' : 'default'}>
+                    <Badge variant={order.status === 'Completed' ? 'secondary' : 'default'}>
                       {order.status}
                     </Badge>
                   </TableCell>

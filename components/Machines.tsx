@@ -25,7 +25,7 @@ export default function Machines() {
               <TableRow key={machine.id}>
                 <TableCell>{machine.name}</TableCell>
                 <TableCell>
-                  <Badge variant={machine.status === 'Running' ? 'success' : 'default'}>
+                  <Badge variant={machine.status === 'Running' ? 'secondary' : 'default'}>
                     {machine.status}
                   </Badge>
                 </TableCell>
