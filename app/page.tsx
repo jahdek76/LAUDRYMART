@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Bell, Menu, Layout, Users, Package, DollarSign, BarChart2, Settings as SettingsIcon, LogOut, Loader, Calendar, Briefcase } from 'lucide-react'
+import { Bell, Menu, X, Layout, Users, Package, DollarSign, BarChart2, Settings as SettingsIcon, LogOut, Loader, Calendar, Briefcase } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
-  DropdownMenu as DropdownMenuPrimitive,
+  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -51,49 +51,57 @@ export default function LaundryManagementApp() {
     }
   }
 
+  const NavContent = () => (
+    <>
+      <div className="mb-8">
+        <AnimatedLogo />
+      </div>
+      <nav className="space-y-2">
+        <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('dashboard')}>
+          <Layout className="mr-2 h-4 w-4" />
+          Dashboard
+        </Button>
+        <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('customers')}>
+          <Users className="mr-2 h-4 w-4" />
+          Customers
+        </Button>
+        <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('orders')}>
+          <Package className="mr-2 h-4 w-4" />
+          Orders
+        </Button>
+        <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('machines')}>
+          <Loader className="mr-2 h-4 w-4" />
+          Machines
+        </Button>
+        <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('inventory')}>
+          <Briefcase className="mr-2 h-4 w-4" />
+          Inventory
+        </Button>
+        <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('scheduling')}>
+          <Calendar className="mr-2 h-4 w-4" />
+          Scheduling
+        </Button>
+        <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('finances')}>
+          <DollarSign className="mr-2 h-4 w-4" />
+          Finances
+        </Button>
+        <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('analytics')}>
+          <BarChart2 className="mr-2 h-4 w-4" />
+          Analytics
+        </Button>
+        <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('settings')}>
+          <Settings className="mr-2 h-4 w-4" />
+          Settings
+        </Button>
+      </nav>
+    </>
+  )
+
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
+      {/* Sidebar for larger screens */}
       <aside className="hidden md:flex md:flex-col md:w-64 bg-white p-4 shadow-md">
-        <AnimatedLogo />
-        <nav className="mt-8 space-y-2">
-          <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('dashboard')}>
-            <Layout className="mr-2 h-4 w-4" />
-            Dashboard
-          </Button>
-          <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('customers')}>
-            <Users className="mr-2 h-4 w-4" />
-            Customers
-          </Button>
-          <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('orders')}>
-            <Package className="mr-2 h-4 w-4" />
-            Orders
-          </Button>
-          <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('machines')}>
-            <Loader className="mr-2 h-4 w-4" />
-            Machines
-          </Button>
-          <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('inventory')}>
-            <Briefcase className="mr-2 h-4 w-4" />
-            Inventory
-          </Button>
-          <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('scheduling')}>
-            <Calendar className="mr-2 h-4 w-4" />
-            Scheduling
-          </Button>
-          <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('finances')}>
-            <DollarSign className="mr-2 h-4 w-4" />
-            Finances
-          </Button>
-          <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('analytics')}>
-            <BarChart2 className="mr-2 h-4 w-4" />
-            Analytics
-          </Button>
-          <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('settings')}>
-            <SettingsIcon className="mr-2 h-4 w-4" />
-            Settings
-          </Button>
-        </nav>
+        <NavContent />
       </aside>
 
       {/* Main Content */}
@@ -112,9 +120,7 @@ export default function LaundryManagementApp() {
                     </Button>
                   </SheetTrigger>
                   <SheetContent side="left" className="w-[300px] sm:w-[400px]">
-                    <nav className="space-y-2">
-                      {/* Add the same buttons as in the sidebar */}
-                    </nav>
+                    <NavContent />
                   </SheetContent>
                 </Sheet>
                 <div className="ml-4 md:ml-0">
@@ -126,7 +132,7 @@ export default function LaundryManagementApp() {
                   <Bell className="h-5 w-5" />
                   <span className="sr-only">View notifications</span>
                 </Button>
-                <DropdownMenuPrimitive>
+                <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                       <Avatar className="h-8 w-8">
@@ -144,7 +150,7 @@ export default function LaundryManagementApp() {
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>
-                      <SettingsIcon className="mr-2 h-4 w-4" />
+                      <Settings className="mr-2 h-4 w-4" />
                       <span>Settings</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
@@ -152,7 +158,7 @@ export default function LaundryManagementApp() {
                       <span>Log out</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
-                </DropdownMenuPrimitive>
+                </DropdownMenu>
               </div>
             </div>
           </div>
