@@ -90,7 +90,7 @@ export default function LaundryManagementApp() {
           Analytics
         </Button>
         <Button variant="ghost" className="w-full justify-start" onClick={() => setCurrentPage('settings')}>
-          <Settings className="mr-2 h-4 w-4" />
+          <SettingsIcon className="mr-2 h-4 w-4" />
           Settings
         </Button>
       </nav>
@@ -150,7 +150,7 @@ export default function LaundryManagementApp() {
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>
-                      <Settings className="mr-2 h-4 w-4" />
+                      <SettingsIcon className="mr-2 h-4 w-4" />
                       <span>Settings</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
